@@ -5,7 +5,7 @@
 <h1 align="center">CommandDash</h1>
 
 <p align="center">
-  <a href="README.md">English</a> ·
+  <a href="README.en.md">English</a> ·
   <strong>简体中文</strong> ·
   <a href="README.ja.md">日本語</a>
 </p>
