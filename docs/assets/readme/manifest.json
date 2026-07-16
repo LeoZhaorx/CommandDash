@@ -7,12 +7,32 @@
       "sha256": "ba9ae4bb26757a928e087d16fda8654349af4f6a5bab16eff6426657824a08bc"
     },
     {
-      "path": "docs/assets/readme/dashboard.png",
+      "path": "docs/assets/readme/dashboard-en.png",
+      "bytes": 1330159,
+      "sha256": "fdcd012c7ce38527a72fcab2de82e8282e41d64f3ea5c6c78f8a382dde886d43"
+    },
+    {
+      "path": "docs/assets/readme/dashboard-ja.png",
+      "bytes": 1332655,
+      "sha256": "e36d4cd78c7cfe9cbd53671fe6f62e9f60aefb292107ac015ad8341943817773"
+    },
+    {
+      "path": "docs/assets/readme/dashboard-zh-cn.png",
       "bytes": 1350104,
       "sha256": "422a1760611c11515cc96550e976ed5f20cee30e55f580a25c3945cddcd13f15"
     },
     {
-      "path": "docs/assets/readme/running.png",
+      "path": "docs/assets/readme/running-en.png",
+      "bytes": 1329891,
+      "sha256": "ecc2f2baac9a8a81a82a7531d224c99a9687a39140b334aee206e8601506d3ea"
+    },
+    {
+      "path": "docs/assets/readme/running-ja.png",
+      "bytes": 1331634,
+      "sha256": "9895d4eee752c4d17e58218665dd67685b1c0ee3339c930a26e6812a9c290a35"
+    },
+    {
+      "path": "docs/assets/readme/running-zh-cn.png",
       "bytes": 1331066,
       "sha256": "faa7d8f8e41b542a580a5d7315ca150c58577be95f3e5558f21db140c1e5550a"
     }

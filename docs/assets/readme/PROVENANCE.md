@@ -1,9 +1,13 @@
 # README Asset Provenance
 
-| 文件 | 类型 | 来源 | 处理方式 | 可公开依据 |
+| File | Type | Source | Processing | Public-use basis |
 | --- | --- | --- | --- | --- |
-| `icon.png` | 应用图标 | CommandDash 项目自有素材 | 原始项目图标，未加入私人数据 | 项目自有素材 |
-| `dashboard.png` | 真实产品截图 | 隔离临时用户目录中运行的 CommandDash | 使用七个中性示例启动项重新截图；未使用作者现有启动项 | 项目真实界面，不含私人路径、项目名、端口或密钥 |
-| `running.png` | 真实产品截图 | 隔离临时用户目录中运行的 CommandDash | 启动本地临时示例服务后截图；界面只显示中性示例名称 | 项目真实界面，不含私人路径、项目名或密钥 |
+| `icon.png` | App icon | CommandDash project asset | Original project icon; contains no private data | Project-owned asset |
+| `dashboard-en.png` | Real product screenshot | CommandDash running with an isolated English demo profile | Seven neutral English launchers; no existing user launcher data | Real project interface without private paths, ports, project names, or secrets |
+| `running-en.png` | Real product screenshot | CommandDash running with an isolated English demo profile | Started a temporary local example service before capture | Real project interface without private paths, project names, or secrets |
+| `dashboard-zh-cn.png` | Real product screenshot | CommandDash running with an isolated Simplified Chinese demo profile | Seven neutral Chinese launchers; no existing user launcher data | Real project interface without private paths, ports, project names, or secrets |
+| `running-zh-cn.png` | Real product screenshot | CommandDash running with an isolated Simplified Chinese demo profile | Started a temporary local example service before capture | Real project interface without private paths, project names, or secrets |
+| `dashboard-ja.png` | Real product screenshot | CommandDash running with an isolated Japanese demo profile | Seven neutral Japanese launchers; no existing user launcher data | Real project interface without private paths, ports, project names, or secrets |
+| `running-ja.png` | Real product screenshot | CommandDash running with an isolated Japanese demo profile | Started a temporary local example service before capture | Real project interface without private paths, project names, or secrets |
 
-原始参考图片仅用于确认产品构图和应展示的功能状态，未直接提交到仓库。发布素材不包含原始参考图中的个人启动命令、端口和本机路径。
+The original reference images were used only to confirm product layout and which functional states should be shown. They are not committed to the repository. Published assets do not contain the personal launcher names, ports, or local paths visible in those references.
