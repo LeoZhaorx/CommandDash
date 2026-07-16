@@ -4,17 +4,23 @@
 
 <h1 align="center">CommandDash</h1>
 
-<p align="center"><strong>把散落在 Finder 和终端里的 macOS 启动脚本，整理成一个可以看见、分类和停止的桌面面板。</strong></p>
+<p align="center">
+  <strong>English</strong> ·
+  <a href="README.zh-CN.md">简体中文</a> ·
+  <a href="README.ja.md">日本語</a>
+</p>
+
+<p align="center"><strong>Turn scattered macOS launch scripts into a visual desktop dashboard you can organize, monitor, and stop.</strong></p>
 
 <p align="center">
-  我做它，是因为常用的 <code>.command</code> 文件越来越多：名字难记、窗口难找，任务是否还在运行也不够直观。
+  I built CommandDash because a growing collection of <code>.command</code> files becomes difficult to remember, locate, and monitor.
 </p>
 
 <p align="center">
-  <a href="#它解决什么">它解决什么</a> ·
-  <a href="#真实界面">真实界面</a> ·
-  <a href="#开始使用">开始使用</a> ·
-  <a href="#兼容性与限制">兼容性</a>
+  <a href="#why-commanddash">Why CommandDash</a> ·
+  <a href="#real-interface">Interface</a> ·
+  <a href="#getting-started">Getting started</a> ·
+  <a href="#compatibility-and-limitations">Compatibility</a>
 </p>
 
 <p align="center">
@@ -24,63 +30,63 @@
   <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-34C759"></a>
 </p>
 
-![CommandDash 中性示例任务面板](docs/assets/readme/dashboard.png)
+![CommandDash displaying neutral English example launchers](docs/assets/readme/dashboard-en.png)
 
-| 点一下就运行 | 状态不用猜 | 启动项不再堆在一起 |
+| Launch with one click | Know what is still running | Keep launchers organized |
 | --- | --- | --- |
-| 拖入 `.command`、`.sh` 或 `.app`，之后从卡片或菜单栏直接启动。 | 自动识别相关进程、PID、监听端口和运行时长，并提供停止操作。 | 用 Tab 分类，保留最近选择，并为卡片设置 Emoji 与渐变背景。 |
+| Drop in a `.command`, `.sh`, or `.app`, then launch it from a card or the menu bar. | Detect related processes, PIDs, listening ports, and uptime, with controls to stop them. | Group items into tabs, restore the last selected tab, and customize cards with emoji and gradients. |
 
-## 它解决什么
+## Why CommandDash
 
-很多本地工具并不值得做成完整 App：一个静态服务器、一段同步脚本、一次构建任务，写成 `.command` 文件最快。但当它们变多以后，Finder 文件夹就不再是一个好用的控制台。
+Many local tools do not need to become full applications. A static server, synchronization task, or build command is often easiest to keep as a `.command` file. Once there are many of them, however, a Finder folder stops being a useful control panel.
 
-CommandDash 给这些启动项一个固定入口：
+CommandDash gives those launchers a permanent home:
 
-- 从桌面面板或菜单栏启动常用任务。
-- 看到哪些任务仍在运行，不必翻找终端窗口。
-- 展开实时日志，复制输出或清空记录。
-- 按任务停止，或者一次停止当前识别到的全部任务。
-- 通过右键菜单重命名、定位文件、调整图标或删除启动项。
+- Start frequently used tasks from the desktop dashboard or menu bar.
+- See which tasks are still running without searching through terminal windows.
+- Expand the live log panel, copy output, or clear the history.
+- Stop one detected task or stop all currently detected tasks.
+- Rename launchers, reveal their files, customize their icons, or remove them from the context menu.
 
-## 真实界面
+## Real interface
 
-下面的图片来自真实应用运行，不是概念稿。截图使用隔离的公开示例数据生成，没有包含作者本机的启动命令、路径和项目名称。
+These are screenshots of the real application, not concept mockups. They were captured with an isolated public demo profile and contain no private launch commands, project names, ports, or personal paths.
 
 <p align="center">
-  <img src="docs/assets/readme/dashboard.png" width="49%" alt="CommandDash 显示七个公开示例启动项">
-  <img src="docs/assets/readme/running.png" width="49%" alt="CommandDash 检测到一个正在运行的公开示例任务">
+  <img src="docs/assets/readme/dashboard-en.png" width="49%" alt="CommandDash showing seven English example launchers">
+  <img src="docs/assets/readme/running-en.png" width="49%" alt="CommandDash detecting one running English example task">
 </p>
 
-## 工作方式
+## How it works
 
 ```mermaid
 flowchart LR
-    A["拖入 .command / .sh / .app"] --> B["保存在用户 Application Support"]
-    B --> C["桌面卡片与菜单栏入口"]
-    C --> D["以当前 macOS 用户权限启动"]
-    D --> E["采集输出并显示日志"]
-    D --> F["通过进程组、路径与端口识别运行状态"]
-    F --> G["停止单个任务或全部任务"]
+    A["Drop a .command / .sh / .app"] --> B["Save metadata in Application Support"]
+    B --> C["Desktop cards and menu bar entry"]
+    C --> D["Launch with the current macOS user permissions"]
+    D --> E["Capture output and display logs"]
+    D --> F["Detect state from process groups, paths, and ports"]
+    F --> G["Stop one task or all detected tasks"]
 ```
 
-CommandDash 不会把你的启动项写进仓库。应用数据保存在：
+CommandDash never stores your launchers in the repository. Application data is saved under:
 
 ```text
 ~/Library/Application Support/CommandDash/
 ```
 
-其中包含启动项列表、Tab 和运行识别指纹。卸载源码或清理 `build/` 不会自动删除这些数据。
+This directory contains the launcher list, tabs, and learned runtime fingerprints. Removing the source checkout or cleaning `build/` does not remove this user data.
 
-更详细的模块说明见 [架构文档](docs/ARCHITECTURE.md)。
+See [Architecture](docs/ARCHITECTURE.md) for the module-level design.
 
-## 开始使用
+## Getting started
 
-### 环境要求
+### Requirements
 
-- macOS 13 Ventura 或更新版本。
-- Xcode 15 或更新版本，以及随 Xcode 提供的 Command Line Tools。
+- macOS 13 Ventura or later.
+- Xcode 15 or later, including the Xcode Command Line Tools.
 
-### 从源码构建
+### Build from source
 
 ```bash
 git clone https://github.com/LeoZhaorx/CommandDash.git
@@ -89,56 +95,56 @@ cd CommandDash
 open ./build/CommandDash.app
 ```
 
-默认会生成同时支持 Apple Silicon 和 Intel Mac 的通用应用。也可以只构建当前需要的架构：
+The default build produces a universal application for both Apple Silicon and Intel Macs. You can also build a single architecture:
 
 ```bash
 ARCHS=arm64 ./build.sh
-# 或
+# or
 ARCHS=x86_64 ./build.sh
 ```
 
-构建结果使用 ad-hoc 签名，适合本地使用和开发验证，不是 App Store 或 Developer ID 发行包。
+The resulting application uses ad-hoc signing. It is intended for local use and development verification, not App Store or Developer ID distribution.
 
-### 第一次使用
+### First use
 
-1. 点击底部 `+` 创建一个 Tab。
-2. 把可信的 `.command`、`.sh` 文件或 `.app` 拖进窗口。
-3. 点击卡片启动；按住 Option 点击可在 Finder 中定位文件。
-4. 点击左上角“运行中”查看进程、端口和运行时间。
-5. 点击右上角箭头展开或收起运行日志。
+1. Click `+` at the bottom to create a tab.
+2. Drop a trusted `.command`, `.sh`, or `.app` into the window.
+3. Click a card to launch it. Option-click to reveal the source file in Finder.
+4. Click the running-task indicator in the upper-left corner to inspect processes, ports, and uptime.
+5. Use the arrow in the upper-right corner to expand or collapse the runtime log.
 
-## 兼容性与限制
+## Compatibility and limitations
 
-- 构建脚本把 deployment target 固定为 macOS 13，并交叉编译 `arm64` 与 `x86_64`。
-- 当前发布检查在 macOS 15.7.4、Xcode/Swift 6.2.4 上完成；CI 会持续验证通用构建和最低系统版本声明。
-- 进程归属通过启动会话、进程组、脚本路径和监听端口推断。复杂的守护进程、容器或二次拉起流程可能无法完全识别。
-- “停止”会向识别到的进程或进程组发送 `SIGTERM`，仍未退出时再发送 `SIGKILL`。请先确认任务归属。
-- CommandDash 不是沙箱，也不审查脚本。它会以当前用户权限运行你主动添加的文件。
-- 当前没有预编译下载、自动更新和正式代码签名流程。
+- The build script targets macOS 13 and cross-compiles both `arm64` and `x86_64`.
+- The current release was verified on macOS 15.7.4 with Xcode and Swift 6.2.4. CI continuously checks the universal build and minimum system version.
+- Process ownership is inferred from launch sessions, process groups, script paths, and listening ports. Complex daemons, containers, and processes that relaunch themselves may not be identified perfectly.
+- Stop actions send `SIGTERM` to the detected process or process group, followed by `SIGKILL` if it remains alive. Confirm ownership before stopping a task.
+- CommandDash is not a sandbox and does not inspect script contents. Added files run with the permissions of the current macOS user.
+- There is currently no prebuilt download, automatic updater, or Developer ID release pipeline.
 
-## 隐私与发布边界
+## Privacy and publishing boundaries
 
-仓库通过 `.gitignore` 排除：
+The repository `.gitignore` excludes:
 
-- `build/` 与 `.app` 构建产物。
-- 所有 `*.command` 文件。
-- `commands.json`、`tabs.json` 和 `runtime_fingerprints.json`。
-- 本地设计笔记与 macOS 元数据。
+- `build/` and generated `.app` bundles.
+- Every `*.command` file.
+- `commands.json`, `tabs.json`, and `runtime_fingerprints.json`.
+- Local design notes and macOS metadata.
 
-README 图片使用单独的临时用户目录和中性任务生成。素材来源与处理说明见 [PROVENANCE.md](docs/assets/readme/PROVENANCE.md)。
+README screenshots use separate temporary user profiles and neutral example tasks. See [Asset provenance](docs/assets/readme/PROVENANCE.md) for source and processing details.
 
-## 开发与验证
+## Development and verification
 
 ```bash
 ./scripts/verify.sh
 ```
 
-验证脚本会执行通用构建、架构检查、macOS 13 最低版本检查、个人路径/特定启动命令扫描，以及 README 本地资源检查。
+The verification script checks the universal build, architectures, macOS 13 deployment target, personal paths and product-specific launcher commands, and all local README assets.
 
-## 贡献、安全与许可
+## Contributing, security, and license
 
-- [贡献指南](CONTRIBUTING.md)
-- [安全策略](SECURITY.md)
+- [Contributing guide](CONTRIBUTING.md)
+- [Security policy](SECURITY.md)
 - [MIT License](LICENSE)
 
-如果你准备修改进程识别或停止逻辑，请先阅读 [架构文档](docs/ARCHITECTURE.md)，并在 Pull Request 中说明测试过的任务类型。
+Before changing process detection or stop behavior, read [Architecture](docs/ARCHITECTURE.md) and document the task types you tested in the pull request.
