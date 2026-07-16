@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "assets": [
+    {
+      "path": "icon.png",
+      "bytes": 785096,
+      "sha256": "ba9ae4bb26757a928e087d16fda8654349af4f6a5bab16eff6426657824a08bc"
+    },
+    {
+      "path": "docs/assets/readme/dashboard.png",
+      "bytes": 1350104,
+      "sha256": "422a1760611c11515cc96550e976ed5f20cee30e55f580a25c3945cddcd13f15"
+    },
+    {
+      "path": "docs/assets/readme/running.png",
+      "bytes": 1331066,
+      "sha256": "faa7d8f8e41b542a580a5d7315ca150c58577be95f3e5558f21db140c1e5550a"
+    }
+  ]
+}

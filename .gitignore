@@ -1,0 +1,14 @@
+.DS_Store
+build/
+*.app
+*.command
+
+# CommandDash stores user launchers outside the repository. Keep accidental
+# exports and local runtime fingerprints out of source control as well.
+commands.json
+tabs.json
+runtime_fingerprints.json
+
+# Local design notes are not part of the distributable project.
+DESIGN.md
+.learnings/
